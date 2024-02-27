@@ -19,7 +19,7 @@ public class HospitalMvcApplication {
     @Bean
     CommandLineRunner commandLineRunner (PatientRepository patientRepository) {
         return args -> {
-            patientRepository.save(new Patient(null,"Hassan",new Date(),false, 18));
+           /* patientRepository.save(new Patient(null,"Hassan",new Date(),false, 18));
             patientRepository.save(new Patient(null,"Abdellah",new Date(),true, 33));
             patientRepository.save(new Patient(null,"Mussa",new Date(),true, 24));
             patientRepository.save(new Patient(null,"Oumar",new Date(),false, 19));
@@ -27,7 +27,7 @@ public class HospitalMvcApplication {
             //Affiche tous les utilisateurs
             patientRepository.findAll().forEach(p -> {
                 System.out.println(p.getNom());
-            });
+            });*/
         };
     }
 }
