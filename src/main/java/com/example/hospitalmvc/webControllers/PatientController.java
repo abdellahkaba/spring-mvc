@@ -3,11 +3,13 @@ package com.example.hospitalmvc.webControllers;
 import com.example.hospitalmvc.entites.Patient;
 import com.example.hospitalmvc.repositories.PatientRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,5 +55,17 @@ public class PatientController {
     @ResponseBody
     public List<Patient> listPatient (){
         return patientRepository.findAll();
+    }
+
+    @GetMapping("/formPatients")
+    public String formPatients (Model model) {
+        model.addAttribute("patient",new Patient());
+        return "formPatients" ;
+    }
+
+    @PostMapping(path = "/save")
+    public String save (Model model, Patient patient) {
+        patientRepository.save(patient) ;
+        return "formPatients";
     }
 }
