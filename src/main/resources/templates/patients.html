@@ -34,6 +34,11 @@
                     <td th:text="${p.dateNaiss}"></td>
                     <td th:text="${p.malade}"></td>
                     <td th:text="${p.score}"></td>
+                    <td>
+                        <a onclick="return confirm('etes vous sur ?')" class="btn btn-danger" th:href="@{delete(id=${p.id},keyword=${keyword}, page=${currentPage})}">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -41,7 +46,7 @@
                 <li th:each="page,status:${pages}">
                     <a th:class="${status.index == currentPage ? 'btn btn-primary ms-1' : 'btn btn-outline-primary ms-1'}"
                        th:text="${status.index}" class=""
-                       th:href="@{/index(page=${status.index},keyword=${keyword})}"
+                       th:href="@{/index(page=${status.index},keyword=${keyword},page=${currentPage})}"
                     >
                     </a>
                 </li>
